@@ -1,11 +1,11 @@
 import { Card, Col, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
-import EditUserForm from "./EditUserForm";
+import EditContact from "./EditContact";
 
-export default function User(props) {
+export default function Contact(props) {
   const handleDelete = (e) => {
     e.preventDefault();
-    props.removeUser(props.userInfo.id);
+    props.removeContact(props.contactInfo.id);
   };
   const [show, setShow] = useState(false);
 
@@ -15,21 +15,21 @@ export default function User(props) {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit User</Modal.Title>
+          <Modal.Title>Edit Contact</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditUserForm userInfo={props.userInfo} editUser={props.editUser} closeModal={handleClose} />
+          <EditContact contactInfo={props.contactInfo} editContact={props.editContact} closeModal={handleClose} />
         </Modal.Body>
       </Modal>
       <Col md="4" style={{ marginBottom: "1rem" }}>
         <Card style={{ width: "15rem" }}>
           <Card.Body>
             <Card.Subtitle className="mb-2 text-muted">
-              CodeTrain User
+              Contacts
             </Card.Subtitle>
-            <Card.Title>{props.userInfo.name}</Card.Title>
-            <Card.Text>Email:{props.userInfo.email}</Card.Text>
-            <Card.Text>Gen:{props.userInfo.gen}</Card.Text>
+            <Card.Title>{props.contactInfo.name}</Card.Title>
+            <Card.Text>Number: {props.contactInfo.cnumber}</Card.Text>
+            <Card.Text>Location: {props.contactInfo.location}</Card.Text>
             <Card.Link href="#">
               <Button
                 variant="primary"

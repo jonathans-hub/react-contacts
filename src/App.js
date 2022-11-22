@@ -1,50 +1,50 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import AddUserForm from "./components/AddUserForm";
-import Users from "./components/Users";
+import AddContact from "./components/AddContact";
+import Contacts from "./components/Contacts";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [
+      contacts: [
         {
-          name: "Uta Jamieson",
-          email: "uta@aol.com",
-          gen: "20",
-          id: "dfsdjkvnsdjkfnskf",
+          name: "Grace Alison",
+          cnumber: "8024896621",
+          location: "Cincinnati, Ohio",
+          id: "dxfgbfgvnsdjkfnskf",
         },
         {
-          name: "Chris Alton",
-          email: "chrisal@aol.com",
-          gen: "18",
-          id: "45fsdsjkvnsdjkfnskf",
+          name: "Morris Sawyer",
+          cnumber: "9600248023",
+          location: "Atlanta, Georgia",
+          id: "3453sdfsjkvnsdjkfnskf",
         },
         {
-          name: "Berus Sama",
-          email: "berus@aol.com",
-          gen: "22",
-          id: "weonbfjkvnwvnsdjkfnskf",
+          name: "Ruis Calvier",
+          cnumber: "2324891257",
+          location: "Conway, Arkansas",
+          id: "cbbvdfjkvnwvnsdjku8nskf",
         },
       ],
     };
   }
-  addNewUSer = (user) => {
-    user.id = Math.random().toString();
+  addNewCOntact = (contact) => {
+    contact.id = Math.random().toString();
     this.setState({
-      users: [...this.state.users, user],
+      contacts: [...this.state.contacts, contact],
     });
   };
-  removeUser = (id) => {
-    let undeletedusers = this.state.users.filter((user) => user.id !== id);
+  removeContact = (id) => {
+    let undeletedcontacts = this.state.contacts.filter((contact) => contact.id !== id);
     this.setState({
-      users: undeletedusers
+      contacts: undeletedcontacts
     });
   };
-  editUser=(id, updatedUser)=>{
+  editContact=(id, updatedContact)=>{
     this.setState({
-      users: this.state.users.map(user=>user.id === id ? updatedUser: user)
+      contacts: this.state.contacts.map(contact=>contact.id === id ? updatedContact: contact)
     })
   }
   render() {
@@ -53,10 +53,10 @@ class App extends Component {
         <Container fluid style={{ marginTop: "2rem" }}>
           <Row>
             <Col md="4">
-              <AddUserForm addUser={this.addNewUSer} />
+              <AddContact addContact={this.addNewCOntact} />
             </Col>
             <Col>
-              <Users userData={this.state.users} removeUser={this.removeUser} editUser={this.editUser}/>
+              <Contacts contactData={this.state.contacts} removeContact={this.removeContact} editContact={this.editContact}/>
             </Col>
           </Row>
         </Container>
